@@ -1,10 +1,10 @@
 package eventapp
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/spf13/viper"
 )
 
 func eventCallBack(c *gin.Context) {
@@ -15,8 +15,13 @@ func eventCallBack(c *gin.Context) {
 		})
 		return
 	}
-	fmt.Printf("challenge is %s\n", in.Challenge)
+	if in.Token != viper.GetString("APP_VERIFICATION_TOKEN") {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "wrong APP_VERIFICATION_TOKEN",
+		})
+		return
+	}
 	c.JSON(http.StatusOK, gin.H{
-		"message": "ok",
+		"challenge": in.Challenge,
 	})
 }
