@@ -13,7 +13,7 @@ type Response struct {
 	Code int
 }
 
-func Request(url string, method string, payload interface{}) (Response, error) {
+func Request(url string, method string, payload interface{}, headers ...map[string]string) (Response, error) {
 
 	data, err := json.Marshal(payload)
 	if err != nil {
@@ -30,6 +30,11 @@ func Request(url string, method string, payload interface{}) (Response, error) {
 	}
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
+	if len(headers) > 0 {
+		for key, value := range headers[0] {
+			req.Header.Set(key, value)
+		}
+	}
 
 	response, err := client.Do(req)
 	if err != nil {
@@ -45,22 +50,22 @@ func Request(url string, method string, payload interface{}) (Response, error) {
 	return Response{resBody, response.StatusCode}, nil
 }
 
-func Get(url string, payload interface{}) (Response, error) {
-	return Request(url, "GET", payload)
+func Get(url string, payload interface{}, headers ...map[string]string) (Response, error) {
+	return Request(url, "GET", payload, headers...)
 }
 
-func Post(url string, payload interface{}) (Response, error) {
-	return Request(url, "POST", payload)
+func Post(url string, payload interface{}, headers ...map[string]string) (Response, error) {
+	return Request(url, "POST", payload, headers...)
 }
 
-func Put(url string, payload interface{}) (Response, error) {
-	return Request(url, "PUT", payload)
+func Put(url string, payload interface{}, headers ...map[string]string) (Response, error) {
+	return Request(url, "PUT", payload, headers...)
 }
 
-func Patch(url string, payload interface{}) (Response, error) {
-	return Request(url, "PATCH", payload)
+func Patch(url string, payload interface{}, headers ...map[string]string) (Response, error) {
+	return Request(url, "PATCH", payload, headers...)
 }
 
-func Delete(url string, payload interface{}) (Response, error) {
-	return Request(url, "DELETE", payload)
+func Delete(url string, payload interface{}, headers ...map[string]string) (Response, error) {
+	return Request(url, "DELETE", payload, headers...)
 }
