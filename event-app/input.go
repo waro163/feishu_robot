@@ -7,7 +7,10 @@ type CallBackInput struct {
 }
 
 type CallBackEvent struct {
-	Schema string      `json:"schema" binding:"required"`
-	Header interface{} `json:"header" binding:"required"`
-	Event  interface{} `json:"event" binding:"required"`
+	Challenge string      `json:"challenge"`
+	Token     string      `json:"token"`
+	Type      string      `json:"type"`
+	Schema    string      `json:"schema"`
+	Header    interface{} `json:"header"`
+	Event     interface{} `json:"event"`
 }
