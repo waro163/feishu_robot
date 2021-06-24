@@ -5,3 +5,9 @@ type CallBackInput struct {
 	Token     string `json:"token" binding:"required"`
 	Type      string `json:"type" binding:"required"`
 }
+
+type CallBackEvent struct {
+	Schema string      `json:"schema" binding:"required"`
+	Header interface{} `json:"header" binding:"required"`
+	Event  interface{} `json:"event" binding:"required"`
+}
