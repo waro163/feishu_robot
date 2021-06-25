@@ -11,13 +11,6 @@ import (
 //企业自建应用获取 tenant_access_token
 func GetTenantAccessToken() (string, error) {
 	url := "https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal/"
-	// body := struct {
-	// 	AppID     string `json:"app_id"`
-	// 	AppSecret string `json:"app_secret"`
-	// }{
-	// 	AppID:     viper.GetString("APP_ID"),
-	// 	AppSecret: viper.GetString("APP_SECRET"),
-	// }
 	body := map[string]string{
 		"app_id":     viper.GetString("APP_ID"),
 		"app_secret": viper.GetString("APP_SECRET"),
