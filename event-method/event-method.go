@@ -6,7 +6,7 @@ import (
 
 type EventFunc func(map[string]string, map[string]interface{}) error
 
-var EventMethod map[string]EventFunc
+var EventMethod = map[string]EventFunc{}
 var eventMethodLock = new(sync.RWMutex)
 
 func RegisterEventMethod(eventType string, f EventFunc) {
