@@ -9,15 +9,15 @@ import (
 )
 
 // https://open.feishu.cn/document/uAjLw4CM/ukTMukTMukTM/reference/contact-v3/user/get
-// kwargs key should only contains "user_id_type" or "department_id_type"
+// querys key should only contains "user_id_type" or "department_id_type"
 // "user_id_type" value should be choice of ("open_id"/"union_id"/"user_id"),default is "open_id"
-// id should be consistent with "user_id_type" value in kwargs
+// id should be consistent with "user_id_type" value in querys
 // token should be value of 'tenant_access_token' or 'user_access_token'
-func GetSingleUserInf(id, token string, kwargs ...map[string]string) (map[string]interface{}, error) {
+func GetSingleUserInf(id, token string, querys ...map[string]string) (map[string]interface{}, error) {
 	url := "https://open.feishu.cn/open-apis/contact/v3/users/" + id
-	if len(kwargs) > 0 {
+	if len(querys) > 0 {
 		var query_param []string
-		for key, value := range kwargs[0] {
+		for key, value := range querys[0] {
 			query_param = append(query_param, key+"="+value)
 		}
 		url = url + "?" + strings.Join(query_param, "&")
