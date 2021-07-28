@@ -7,10 +7,10 @@ func init() {
 	eventmethod.RegisterEventMethod("iim.chat.updated_v1", HandleGroupUpdateEvent)
 }
 
-func HandleGroupDisbandedEvent(map[string]string, map[string]interface{}) error {
+func HandleGroupDisbandedEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleGroupUpdateEvent(map[string]string, map[string]interface{}) error {
+func HandleGroupUpdateEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }

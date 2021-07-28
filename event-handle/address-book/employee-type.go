@@ -11,22 +11,22 @@ func init() {
 	eventmethod.RegisterEventMethod("contact.employee_type_enum.deleted_v3", HandleEmployeeTypeDeleteEvent)
 }
 
-func HandleEmployeeTypeCreateEvent(map[string]string, map[string]interface{}) error {
+func HandleEmployeeTypeCreateEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleEmployeeTypeActiveEvent(map[string]string, map[string]interface{}) error {
+func HandleEmployeeTypeActiveEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleEmployeeTypeDeactiveEvent(map[string]string, map[string]interface{}) error {
+func HandleEmployeeTypeDeactiveEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleEmployeeTypeUpdateEvent(map[string]string, map[string]interface{}) error {
+func HandleEmployeeTypeUpdateEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleEmployeeTypeDeleteEvent(map[string]string, map[string]interface{}) error {
+func HandleEmployeeTypeDeleteEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }

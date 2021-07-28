@@ -7,6 +7,6 @@ func init() {
 	eventmethod.RegisterEventMethod("contact.scope.updated_v3", HandleScopeUpdateEvent)
 }
 
-func HandleScopeUpdateEvent(map[string]string, map[string]interface{}) error {
+func HandleScopeUpdateEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }

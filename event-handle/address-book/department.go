@@ -11,14 +11,14 @@ func init() {
 	eventmethod.RegisterEventMethod("contact.department.created_v3", HandleDepartmentCreate)
 }
 
-func HandleDepartmentCreate(map[string]string, map[string]interface{}) error {
+func HandleDepartmentCreate(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleDepartmentDelete(map[string]string, map[string]interface{}) error {
+func HandleDepartmentDelete(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleDepartmentUpdate(map[string]string, map[string]interface{}) error {
+func HandleDepartmentUpdate(header map[string]string, event map[string]interface{}) error {
 	return nil
 }

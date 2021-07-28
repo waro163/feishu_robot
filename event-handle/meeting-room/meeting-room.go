@@ -9,18 +9,18 @@ func init() {
 	eventmethod.RegisterEventMethod("meeting_room.status_changed_v1", HandleMeetingRoomStatusChangeEvent)
 }
 
-func HandleMeetingRoomCreateEvent(map[string]string, map[string]interface{}) error {
+func HandleMeetingRoomCreateEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleMeetingRoomUpdateEvent(map[string]string, map[string]interface{}) error {
+func HandleMeetingRoomUpdateEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleMeetingRoomDeleteEvent(map[string]string, map[string]interface{}) error {
+func HandleMeetingRoomDeleteEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleMeetingRoomStatusChangeEvent(map[string]string, map[string]interface{}) error {
+func HandleMeetingRoomStatusChangeEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }

@@ -7,10 +7,10 @@ func init() {
 	eventmethod.RegisterEventMethod("im.message.message_read_v1", HandleMsgReadEvent)
 }
 
-func HandleMsgEvent(map[string]string, map[string]interface{}) error {
+func HandleMsgEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleMsgReadEvent(map[string]string, map[string]interface{}) error {
+func HandleMsgReadEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }

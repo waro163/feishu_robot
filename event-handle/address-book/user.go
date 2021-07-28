@@ -11,14 +11,14 @@ func init() {
 	eventmethod.RegisterEventMethod("contact.user.updated_v3", HandleStaffContactUpdateEvent)
 }
 
-func HandleStaffInductionEvent(map[string]string, map[string]interface{}) error {
+func HandleStaffInductionEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleStaffOffEvent(map[string]string, map[string]interface{}) error {
+func HandleStaffOffEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleStaffContactUpdateEvent(map[string]string, map[string]interface{}) error {
+func HandleStaffContactUpdateEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }

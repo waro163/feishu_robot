@@ -9,14 +9,14 @@ func init() {
 	eventmethod.RegisterEventMethod("helpdesk.ticket_message.created_v1", HandleTicketMsgCreateEvent)
 }
 
-func HandleTicketCreateEvent(map[string]string, map[string]interface{}) error {
+func HandleTicketCreateEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleTicketUpdateEvent(map[string]string, map[string]interface{}) error {
+func HandleTicketUpdateEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleTicketMsgCreateEvent(map[string]string, map[string]interface{}) error {
+func HandleTicketMsgCreateEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }

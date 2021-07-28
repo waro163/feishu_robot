@@ -11,26 +11,26 @@ func init() {
 	eventmethod.RegisterEventMethod("p2p_chat_create", HandleChatFirstCreateUser)
 }
 
-func HandleAddBot(map[string]string, map[string]interface{}) error {
+func HandleAddBot(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleRemoveBot(map[string]string, map[string]interface{}) error {
+func HandleRemoveBot(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleAddUser(map[string]string, map[string]interface{}) error {
+func HandleAddUser(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleRemoveUser(map[string]string, map[string]interface{}) error {
+func HandleRemoveUser(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleWithdrawnUser(map[string]string, map[string]interface{}) error {
+func HandleWithdrawnUser(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleChatFirstCreateUser(map[string]string, map[string]interface{}) error {
+func HandleChatFirstCreateUser(header map[string]string, event map[string]interface{}) error {
 	return nil
 }

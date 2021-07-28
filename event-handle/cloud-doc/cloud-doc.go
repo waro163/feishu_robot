@@ -11,26 +11,26 @@ func init() {
 	eventmethod.RegisterEventMethod("drive.file.deleted_v1", HandleFileDeleteEvent)
 }
 
-func HandleFileReadEvent(map[string]string, map[string]interface{}) error {
+func HandleFileReadEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleFileTitleUpdateEvent(map[string]string, map[string]interface{}) error {
+func HandleFileTitleUpdateEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleFileAddMemberEvent(map[string]string, map[string]interface{}) error {
+func HandleFileAddMemberEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleFileRemoveMemberEvent(map[string]string, map[string]interface{}) error {
+func HandleFileRemoveMemberEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleFileMoveTrashEvent(map[string]string, map[string]interface{}) error {
+func HandleFileMoveTrashEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
 
-func HandleFileDeleteEvent(map[string]string, map[string]interface{}) error {
+func HandleFileDeleteEvent(header map[string]string, event map[string]interface{}) error {
 	return nil
 }
