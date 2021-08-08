@@ -42,11 +42,13 @@ func eventCallBack(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "lost event_type field in body header"})
 		return
 	}
+	log.Printf("input body:header-%v, event-%v", in.Header, in.Event)
 	eventFunc := eventmethod.GetEventMethod(eventType)
 	err := eventFunc(in.Header, in.Event.(map[string]interface{}))
 	if err != nil {
 		// TODO:
 		// handle event callback function error, send message to notice dev
+		log.Printf("event function error: %s\n", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"message": "handle callback error: " + err.Error()})
 		return
 	}
