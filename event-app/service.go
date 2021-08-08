@@ -5,6 +5,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
+	_ "github.com/waro163/feishu_robot/event-handle/message"
+	eventmethod "github.com/waro163/feishu_robot/event-method"
 )
 
 func eventCallBack(c *gin.Context) {
@@ -26,5 +28,18 @@ func eventCallBack(c *gin.Context) {
 		return
 	}
 	// handle version 2.0 message according to header and event
+	eventType, ok := in.Header["event_type"]
+	if !ok {
+		c.JSON(http.StatusBadRequest, gin.H{"message": "lost event_type field in body header"})
+		return
+	}
+	eventFunc := eventmethod.GetEventMethod(eventType)
+	err := eventFunc(in.Header, in.Event.(map[string]interface{}))
+	if err != nil {
+		// TODO:
+		// handle event callback function error, send message to notice dev
+		c.JSON(http.StatusInternalServerError, gin.H{"message": "handle callback error: " + err.Error()})
+		return
+	}
 	c.JSON(http.StatusOK, gin.H{"message": "ok"})
 }
