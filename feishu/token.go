@@ -3,6 +3,7 @@ package feishu
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 
 	"github.com/spf13/viper"
 	"github.com/waro163/feishu_robot/requests"
@@ -21,10 +22,12 @@ func GetTenantAccessToken() (string, error) {
 	}
 	var res map[string]interface{}
 	if err = json.Unmarshal(resp.Body, &res); err != nil {
+		log.Printf("unmarshal tenant_access_token error:%v\n", resp.Body)
 		return "", err
 	}
 	if res["code"] != 0 {
-		return "", fmt.Errorf("code: %d, msg: %s", res["code"], res["message"])
+		log.Printf("get tenant_access_token error:%v\n", res)
+		return "", fmt.Errorf("code: %d, msg: %s", res["code"], res["msg"])
 	}
 	return res["tenant_access_token"].(string), nil
 }
@@ -42,10 +45,12 @@ func GetAppAccessToken() (string, error) {
 	}
 	var res map[string]interface{}
 	if err = json.Unmarshal(resp.Body, &res); err != nil {
+		log.Printf("unmarshal app_access_token error:%v\n", resp.Body)
 		return "", err
 	}
 	if res["code"] != 0 {
-		return "", fmt.Errorf("code: %d, msg: %s", res["code"], res["message"])
+		log.Printf("get app_access_token error:%v\n", res)
+		return "", fmt.Errorf("code: %d, msg: %s", res["code"], res["msg"])
 	}
 	return res["app_access_token"].(string), nil
 }
