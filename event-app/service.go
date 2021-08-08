@@ -17,7 +17,7 @@ func eventCallBack(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
 		return
 	}
-	if in.Token != viper.GetString("APP_VERIFICATION_TOKEN") {
+	if in.Token != "" && in.Token != viper.GetString("APP_VERIFICATION_TOKEN") {
 		log.Printf("token is not equal verification token: %s", in.Token)
 		c.JSON(http.StatusBadRequest, gin.H{"message": "wrong APP_VERIFICATION_TOKEN"})
 		return
@@ -31,6 +31,11 @@ func eventCallBack(c *gin.Context) {
 		return
 	}
 	// handle version 2.0 message according to header and event
+	if in.Header["token"] != viper.GetString("APP_VERIFICATION_TOKEN") {
+		log.Printf("token is not equal verification token in schema 2.0: %s", in.Header["token"])
+		c.JSON(http.StatusBadRequest, gin.H{"message": "wrong APP_VERIFICATION_TOKEN in schema 2.0"})
+		return
+	}
 	eventType, ok := in.Header["event_type"]
 	if !ok {
 		log.Printf("not found event_type in body header: %v\n", in.Header)
