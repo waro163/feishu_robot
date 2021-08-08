@@ -1,6 +1,7 @@
 package eventapp
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -12,10 +13,12 @@ import (
 func eventCallBack(c *gin.Context) {
 	var in CallBackEvent
 	if err := c.ShouldBindJSON(&in); err != nil {
+		log.Printf("decode input error: %s\n", err)
 		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
 		return
 	}
 	if in.Token != viper.GetString("APP_VERIFICATION_TOKEN") {
+		log.Printf("token is not equal verification token: %s", in.Token)
 		c.JSON(http.StatusBadRequest, gin.H{"message": "wrong APP_VERIFICATION_TOKEN"})
 		return
 	}
@@ -30,6 +33,7 @@ func eventCallBack(c *gin.Context) {
 	// handle version 2.0 message according to header and event
 	eventType, ok := in.Header["event_type"]
 	if !ok {
+		log.Printf("not found event_type in body header: %v\n", in.Header)
 		c.JSON(http.StatusBadRequest, gin.H{"message": "lost event_type field in body header"})
 		return
 	}
