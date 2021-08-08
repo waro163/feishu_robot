@@ -7,10 +7,10 @@ type CallBackInput struct {
 }
 
 type CallBackEvent struct {
-	Challenge string      `json:"challenge"`
-	Token     string      `json:"token"`
-	Type      string      `json:"type"`
-	Schema    string      `json:"schema"`
-	Header    interface{} `json:"header"`
-	Event     interface{} `json:"event"`
+	Challenge string            `json:"challenge"`
+	Token     string            `json:"token"`
+	Type      string            `json:"type"`
+	Schema    string            `json:"schema"`
+	Header    map[string]string `json:"header"`
+	Event     interface{}       `json:"event"`
 }
