@@ -25,7 +25,7 @@ func GetTenantAccessToken() (string, error) {
 		log.Printf("unmarshal tenant_access_token error:%v\n", resp.Body)
 		return "", err
 	}
-	if res["code"] != 0 {
+	if int(res["code"].(float64)) != 0 {
 		log.Printf("get tenant_access_token error:%v\n", res)
 		return "", fmt.Errorf("code: %d, msg: %s", res["code"], res["msg"])
 	}
@@ -48,7 +48,7 @@ func GetAppAccessToken() (string, error) {
 		log.Printf("unmarshal app_access_token error:%v\n", resp.Body)
 		return "", err
 	}
-	if res["code"] != 0 {
+	if int(res["code"].(float64)) != 0 {
 		log.Printf("get app_access_token error:%v\n", res)
 		return "", fmt.Errorf("code: %d, msg: %s", res["code"], res["msg"])
 	}
